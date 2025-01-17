@@ -11,13 +11,14 @@ function HomePage() {
         <div className="hp-container">
             <div className="headline-wrapper">
                     <h1 id="hp-title">Mirror</h1>
-                    <h2 id="hp-headline"> The Future Of Beauty Is Personalized</h2>
-                    <p id="hp-subheadline">Empowering self-care and confidence through personalized beauty tech.</p>
+                    <h2 id="hp-headline"> Discover Your Authentic Beauty</h2>
+                    <p id="hp-subheadline">Empowering self-expression through personalized beauty insights.</p>
                     <div className="hp-btn-wrapper">
                     <button id="hp-try-btn" onClick={(e) => {
                         e.preventDefault();
                         navigate("/mirror");
-                    }}>Try Demo</button>
+
+                    }}>Take A Look In The Mirror</button>
 
                     </div>
             </div>

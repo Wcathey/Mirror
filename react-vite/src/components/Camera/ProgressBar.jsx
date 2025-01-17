@@ -1,7 +1,11 @@
 
 function ProgressBar () {
+
+    
+
     return (
         <div className="progress-bar-container">
+            <p id="pb-status">Loading...</p>
             <div className="progress-bar"></div>
                 <div id="load-1"></div>
                 <div id="load-2"></div>

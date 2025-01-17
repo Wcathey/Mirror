@@ -6,9 +6,11 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
+import deeparReducer from "./deepar";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  deepar: deeparReducer
 });
 
 let enhancer;
