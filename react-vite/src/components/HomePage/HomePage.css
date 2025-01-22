@@ -13,7 +13,7 @@ margin-top: 10rem;
 }
 #hp-title {
     font-size: 9rem;
-    color: #00c4cc;
+    color: #f185df;
     font-weight: light;
 }
 
@@ -36,14 +36,14 @@ text-align: right;
 border-radius: 50%;
 width: 450px;
 height: fit-content;
-border: 4px solid #00c4cc;
+border: 4px solid rgb(209, 19, 216);
 margin: 5rem;
 
 }
 
 #hp-try-btn {
 
-    background-color: rgb(3, 248, 187);;
+    background-color: rgb(209, 19, 216);
     text-align: center;
     width: 60%;
     margin-top: 5rem;
@@ -53,9 +53,9 @@ margin: 5rem;
     color: #ffffff;
     font-weight: light;
     cursor: pointer;
-    
+
 }
 
 #hp-try-btn:hover {
-    background-color: rgb(7, 224, 170);
+    background-color: rgb(190, 26, 196);
 }

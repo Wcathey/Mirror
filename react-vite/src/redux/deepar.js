@@ -3,6 +3,7 @@ import * as deepar from "deepar";
 const START_DEEPAR = 'deepar/startDeepar';
 const STOP_DEEPAR = 'deepar/stopDeepar';
 
+
 const startDeepar = (data) => ({
     type: START_DEEPAR,
     data
@@ -16,8 +17,8 @@ const stopDeepar = () => ({
 export const initializeDeepAr = (element) => async (dispatch) => {
     const deepAR = await deepar.initialize({
         licenseKey: '16246bf4acafadf74cb16bf63a8f3ce7c71e4602bbc200f4ebf5863c12f603ebc9e260c61927603b',
-        previewElement: element,
-        effect: '/src/DeepArSDK/effects/eyeshadow.deepar'
+        previewElement: element
+
     });
         dispatch(startDeepar(deepAR));
 

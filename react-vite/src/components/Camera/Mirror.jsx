@@ -1,26 +1,50 @@
 import { useEffect, useState, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { initializeDeepAr,reloadDeepAr } from "../../redux/deepar";
-import * as deepar from "deepar";
+import { initializeDeepAr, reloadDeepAr } from "../../redux/deepar";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import MediaModal from "../MediaModal";
+import { FaCamera } from "react-icons/fa";
+
+
 import './Mirror.css';
 
 function Mirror() {
     const dispatch = useDispatch();
     const deepARElement = useRef();
     const deepAr = useSelector((store) => store.deepar.Sdk)
+    const [mediaSrc, setMediaSrc] = useState("");
+    const [newImage,setNewImage] = useState();
+
+    //deep ar can only initialize once, on redirect will track state and shut down to reinitialize
     useEffect(() => {
-        if(deepARElement.current) {
-            if(deepAr) {
+        if (deepARElement.current) {
+            if (deepAr) {
                 dispatch(reloadDeepAr(deepAr)).then(
                     dispatch(initializeDeepAr(deepARElement.current))
                 )
             }
             else {
-            dispatch(initializeDeepAr(deepARElement.current))
+                dispatch(initializeDeepAr(deepARElement.current))
             }
-    }
+        }
+
+
     }, [dispatch])
 
+
+    //loads an effect using switchEffect method taking in the target value
+    //*Important: all values must match file path to function properly else 404
+    const changeEffect = async (effect) => {
+        await deepAr.switchEffect(`/src/DeepArSDK/effects/${effect}.deepar`)
+    }
+    // takes screenshot and returns a data url
+    const captureImage = async () => {
+        const imageData= await deepAr.takeScreenshot();
+        const imageElement = document.getElementById('media-image');
+        imageElement.src = imageData;
+
+
+    }
 
 
     return (
@@ -30,21 +54,32 @@ function Mirror() {
             <div id="screen-container">
                 <div id="ar-screen" ref={deepARElement}>
                     <div className="ar-btn-wrapper">
-                        <button id="capture-btn"></button>
+                        <OpenModalButton
+                        modalComponent={<MediaModal/>}
+                        onButtonClick={captureImage}
+                        buttonText={<FaCamera />}
+
+                        />
                     </div>
 
                 </div>
                 <div id="ar-options">
                     <div className="effect-option">
                         <label>Skin</label>
-                        <select name="skin" id="skin-options">
+                        <select name="skin" id="skin-options" onChange={(e) => {
+                            e.stopPropagation()
+                            changeEffect(e.target.value)
+                        }}>
                             <option value="foundation">Foundation</option>
                             <option value="blush">Blush</option>
                         </select>
                     </div>
                     <div className="effect-option">
                         <label>Eyes</label>
-                        <select name="eye" id="eye-options">
+                        <select name="eye" id="eye-options" onChange={(e) => {
+                            e.stopPropagation()
+                            changeEffect(e.target.value)
+                        }}>
                             <option value="eyeshadow">Eye Shadow</option>
                             <option value="eyeliner">Eye Liner</option>
                             <option value="mascara">Mascara</option>
@@ -52,13 +87,19 @@ function Mirror() {
                     </div>
                     <div className="effect-option">
                         <label>Lips</label>
-                        <select name="lips" id="lip-options">
+                        <select name="lips" id="lip-options" onChange={(e) => {
+                            e.stopPropagation()
+                            changeEffect(e.target.value)
+                        }}>
                             <option value="lipstick">Lipstick</option>
                         </select>
                     </div>
                     <div className="effect-option">
                         <label>Add Ons</label>
-                        <select name="add-on" id="add-on-options">
+                        <select name="add-on" id="add-on-options" onChange={(e) => {
+                            e.stopPropagation()
+                            changeEffect(e.target.value)
+                        }}>
                             <option value="eyelashes">Eyelashes</option>
                             <option value="glitter">Glitter</option>
                             <option value="gloss">Lip Gloss</option>
