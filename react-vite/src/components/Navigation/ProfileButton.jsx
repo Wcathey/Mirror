@@ -46,6 +46,7 @@ function ProfileButton() {
 
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>
+          
           {user ? (
             <>
               <li>{user.username}</li>
@@ -55,6 +56,7 @@ function ProfileButton() {
               </li>
             </>
           ) : (
+
             <>
               <OpenModalMenuItem
                 itemText="Log In"

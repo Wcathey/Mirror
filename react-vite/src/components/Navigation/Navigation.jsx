@@ -11,6 +11,7 @@ function Navigation() {
     <div className="nav-container">
 
     <ul id="nav-links">
+
       <li>
         <NavLink to="/">Home</NavLink>
       </li>

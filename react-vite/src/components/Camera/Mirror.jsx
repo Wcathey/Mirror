@@ -35,7 +35,13 @@ function Mirror() {
     //loads an effect using switchEffect method taking in the target value
     //*Important: all values must match file path to function properly else 404
     const changeEffect = async (effect) => {
-        await deepAr.switchEffect(`/src/DeepArSDK/effects/${effect}.deepar`)
+        if(effect === "") {
+        await deepAr.clearEffect()
+        }
+        else {
+            await deepAr.switchEffect(`/src/DeepArSDK/effects/${effect}.deepar`)
+
+        }
     }
     // takes screenshot and returns a data url
     const captureImage = async () => {
@@ -70,6 +76,7 @@ function Mirror() {
                             e.stopPropagation()
                             changeEffect(e.target.value)
                         }}>
+                            <option value=""></option>
                             <option value="foundation">Foundation</option>
                             <option value="blush">Blush</option>
                         </select>
@@ -80,6 +87,7 @@ function Mirror() {
                             e.stopPropagation()
                             changeEffect(e.target.value)
                         }}>
+                            <option value=""></option>
                             <option value="eyeshadow">Eye Shadow</option>
                             <option value="eyeliner">Eye Liner</option>
                             <option value="mascara">Mascara</option>
@@ -87,10 +95,12 @@ function Mirror() {
                     </div>
                     <div className="effect-option">
                         <label>Lips</label>
+
                         <select name="lips" id="lip-options" onChange={(e) => {
                             e.stopPropagation()
                             changeEffect(e.target.value)
                         }}>
+                            <option value=""></option>
                             <option value="lipstick">Lipstick</option>
                         </select>
                     </div>
@@ -100,6 +110,7 @@ function Mirror() {
                             e.stopPropagation()
                             changeEffect(e.target.value)
                         }}>
+                            <option value=""></option>
                             <option value="eyelashes">Eyelashes</option>
                             <option value="glitter">Glitter</option>
                             <option value="gloss">Lip Gloss</option>
