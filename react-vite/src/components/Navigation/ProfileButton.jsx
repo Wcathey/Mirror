@@ -46,7 +46,7 @@ function ProfileButton() {
 
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>
-          
+
           {user ? (
             <>
               <li>{user.username}</li>
@@ -57,7 +57,7 @@ function ProfileButton() {
             </>
           ) : (
 
-            <>
+            <div className="user-cred-options">
               <OpenModalMenuItem
                 itemText="Log In"
                 onItemClick={closeMenu}
@@ -68,7 +68,7 @@ function ProfileButton() {
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
-            </>
+            </div>
           )}
         </ul>
       )}

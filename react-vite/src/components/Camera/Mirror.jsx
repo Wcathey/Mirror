@@ -40,7 +40,7 @@ function Mirror() {
         }
         else {
             await deepAr.switchEffect(`/src/DeepArSDK/effects/${effect}.deepar`)
-
+-``
         }
     }
     // takes screenshot and returns a data url
