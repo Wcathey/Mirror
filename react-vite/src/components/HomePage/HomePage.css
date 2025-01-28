@@ -54,7 +54,11 @@
 }
 
 .problem-container,
-.guide-container {
+.guide-container,
+.plan-container,
+.avoid-fail-container,
+.achieve-container
+ {
     display: grid;
     width: 100%;
     text-align: center;
@@ -69,16 +73,23 @@
 }
 
 #problem-text-wrapper,
-#guide-text-wrapper {
+#guide-text-wrapper,
+#plan-text-wrapper,
+#af-text-wrapper,
+#achieve-text-wrapper {
 
     border-top: 4px solid rgb(255, 3, 255);
     background-color: rgb(0, 0, 0);
     padding: 1rem;
 
+
 }
 
 #problem-text-wrapper h1,
-#guide-text-wrapper h1
+#guide-text-wrapper h1,
+#plan-text-wrapper h1,
+#af-text-wrapper h1,
+#achieve-text-wrapper h1
  {
     color: white;
     font-size: 3rem;
@@ -86,20 +97,75 @@
 }
 
 #problem-text-wrapper p,
-#guide-text-wrapper p {
+#guide-text-wrapper p,
+#plan-text-wrapper p,
+#af-text-wrapper p,
+#achieve-text-wrapper p
+
+ {
     color: rgb(245, 235, 235);
     padding: 1rem;
 }
 
-#guide-text-wrapper h2 {
+#guide-text-wrapper h2,
+#plan-text-wrapper h2
+ {
     font-size: 2rem;
     color: rgb(233, 103, 211);
+
 }
 
 #guide-video-container {
     display: grid;
-    grid-template-columns: 50% 50%;
-    margin: 0 auto;
     gap: 3rem;
+}
+
+#guide-video-container iframe {
+    margin: 0 auto;
+}
+
+#guide-video-container p {
+    color: rgb(235, 178, 232);
+    font-size: 1rem;
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+
+#plan-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ec80c8;
+    border-radius: 30px;
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+#plan-cta a {
+    font-size: 2rem;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+
+
+}
+
+#achieve-btn-wrapper {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: #ec80c8;
+    padding: 2rem;
+}
+
+.achieve-btn {
+    padding: 1rem;
+    width: 30%;
+    font-size: 2rem;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
 
 }
