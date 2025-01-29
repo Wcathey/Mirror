@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { initializeDeepAr, reloadDeepAr } from "../../redux/deepar";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
@@ -12,8 +12,7 @@ function Mirror() {
     const dispatch = useDispatch();
     const deepARElement = useRef();
     const deepAr = useSelector((store) => store.deepar.Sdk)
-    const [mediaSrc, setMediaSrc] = useState("");
-    const [newImage,setNewImage] = useState();
+
 
     //deep ar can only initialize once, on redirect will track state and shut down to reinitialize
     useEffect(() => {
@@ -29,7 +28,7 @@ function Mirror() {
         }
 
 
-    }, [dispatch])
+    }, [])
 
 
     //loads an effect using switchEffect method taking in the target value

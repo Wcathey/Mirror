@@ -1,11 +1,34 @@
 import { NavLink } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
+import SignupFormModal from "../SignupFormModal";
 import "./HomePage.css";
 
 function HomePage() {
 
 
+    const [showMenu, setShowMenu] = useState(false);
+    const divRef = useRef();
 
+    const toggleMenu = (e) => {
+        e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
+        setShowMenu(!showMenu);
+    };
 
+    useEffect(() => {
+        if (!showMenu) return;
+
+        const closeMenu = (e) => {
+            if (ulRef.current && !ulRef.current.contains(e.target)) {
+                setShowMenu(false);
+            }
+        };
+        document.addEventListener("click", closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
+
+    const closeMenu = () => setShowMenu(false);
 
     return (
         <div className="hp-container">
@@ -43,7 +66,7 @@ function HomePage() {
                     </p>
                 </div>
 
-                <img id="collage-image" src="../../../public/Images/diverse-collage.jpg" alt="woman-collage"></img>
+                <img id="collage-image" src="../../../Images/diverse-collage.jpg" alt="woman-collage"></img>
             </div>
 
             <div className="guide-container">
@@ -55,8 +78,8 @@ function HomePage() {
                 <div id="guide-video-container">
 
                     <p>Watch these short videos to learn more:</p>
-                    <iframe width="700" height="500" src="https://www.youtube.com/embed/CaDb2VL3IXM?si=bMKuB7yCXbxDT-6A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <iframe width="700" height="500" src="https://www.youtube.com/embed/mmLq9C5Di44?si=_9L2RkyMpMhVrA2Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>1``
+                    <iframe width="700" height="500" src="https://www.youtube.com/embed/CaDb2VL3IXM?si=bMKuB7yCXbxDT-6A" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowfullscreen="allow"></iframe>
+                    <iframe width="700" height="500" src="https://www.youtube.com/embed/mmLq9C5Di44?si=_9L2RkyMpMhVrA2Z" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowfullscreen="allow"></iframe>1``
                 </div>
             </div>
 
@@ -69,14 +92,20 @@ function HomePage() {
                     <p>Discover colors, accessories, and makeup that suit you best. </p>
                     <h2>3. Embrace Your Style:</h2>
                     <p>Celebrate your individuality with confidence.</p>
-                    <div id="plan-cta">
-                        <NavLink to="/">Start Your Journey Now</NavLink>
+                    <div id="plan-cta" ref={divRef}>
+                    <OpenModalMenuItem
+                        itemText="Start Your Journey"
+                        onItemClick={closeMenu}
+                        modalComponent={<SignupFormModal />}
+                    />
                     </div>
 
                 </div>
             </div>
 
-            <div className="avoid-fail-container">
+
+        <div id="hp-footer">
+<div className="avoid-fail-container">
                 <div id="af-text-wrapper">
                     <h1>Don’t Let Outdated Beauty Standards Hold You Back</h1>
                     <p>Feeling like you have to fit a mold can take a toll on your confidence. Mirror is here to remind you that your uniqueness is your strength.</p>
@@ -88,13 +117,10 @@ function HomePage() {
                     <h1>Own Your Authenticity</h1>
                     <p>Join the growing community of empowered individuals using Mirror to embrace their beauty. Discover how self-expression can transform your confidence and mental well-being.</p>
                 </div>
-                <div id="achieve-btn-wrapper">
-                    <button className="achieve-btn">Get Started for Free</button>
-                    <button className="achieve-btn">Join Our Community</button>
-                </div>
-
 
             </div>
+        </div>
+
 
         </div>
 

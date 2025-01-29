@@ -1,0 +1,50 @@
+
+.login-modal-container {
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 1rem;
+}
+
+#login-form {
+
+    color:rgb(209, 6, 192);
+
+
+
+
+
+
+
+}
+
+#login-title {
+    font-size: 3rem;
+    color: white;
+
+}
+
+#login-form label {
+    font-size: 20px;
+
+
+}
+
+#login-form input {
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+
+
+}
+
+#login-form button {
+    padding: 5px;
+    width: 30%;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 1rem;
+    color: black;
+    font-weight: 500;
+    background-color: rgb(209, 6, 192);
+    border: 2px solid white;
+}

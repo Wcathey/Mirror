@@ -55,9 +55,7 @@
 
 .problem-container,
 .guide-container,
-.plan-container,
-.avoid-fail-container,
-.achieve-container
+.plan-container
  {
     display: grid;
     width: 100%;
@@ -74,9 +72,8 @@
 
 #problem-text-wrapper,
 #guide-text-wrapper,
-#plan-text-wrapper,
-#af-text-wrapper,
-#achieve-text-wrapper {
+#plan-text-wrapper
+ {
 
     border-top: 4px solid rgb(255, 3, 255);
     background-color: rgb(0, 0, 0);
@@ -87,9 +84,7 @@
 
 #problem-text-wrapper h1,
 #guide-text-wrapper h1,
-#plan-text-wrapper h1,
-#af-text-wrapper h1,
-#achieve-text-wrapper h1
+#plan-text-wrapper h1
  {
     color: white;
     font-size: 3rem;
@@ -98,10 +93,7 @@
 
 #problem-text-wrapper p,
 #guide-text-wrapper p,
-#plan-text-wrapper p,
-#af-text-wrapper p,
-#achieve-text-wrapper p
-
+#plan-text-wrapper p
  {
     color: rgb(245, 235, 235);
     padding: 1rem;
@@ -143,29 +135,51 @@
 
 }
 
-#plan-cta a {
+#plan-cta {
     font-size: 2rem;
     color: rgb(0, 0, 0);
-    text-decoration: none;
+    cursor: pointer;
 
 
 }
 
-#achieve-btn-wrapper {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    background-color: #ec80c8;
-    padding: 2rem;
+#hp-footer {
+display: grid;
+border-top: 4px solid rgb(255, 3, 255);
+background-color: black;
 }
 
-.achieve-btn {
+.avoid-fail-container,
+.achieve-container {
+    width: 100%;
+
+
+}
+
+#af-text-wrapper,
+#achieve-text-wrapper {
+
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: space-between;
+    align-items: end;
+    padding-bottom: 1rem;
+    text-align: center;
+
+}
+
+#af-text-wrapper p,
+#achieve-text-wrapper p {
+    color: rgb(245, 235, 235);
     padding: 1rem;
-    width: 30%;
-    font-size: 2rem;
-    border: none;
-    border-radius: 20px;
-    background-color: rgb(255, 255, 255);
+    font-weight: bold;
 
+
+}
+
+#af-text-wrapper h1,
+#achieve-text-wrapper h1 {
+    font-size: 3rem;
+    color: white;
 }

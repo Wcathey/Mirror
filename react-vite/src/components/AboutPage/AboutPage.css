@@ -1,0 +1,70 @@
+
+.about-page-container {
+    background-color: black;
+    display:grid;
+    grid-template-rows: 50% 50%;
+    height: 100%;
+    border-top: 4px solid rgb(255, 3, 255);
+}
+
+.about-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+
+}
+
+#process-wrapper {
+    border-top: 4px solid rgb(255, 3, 255);
+    background-color: black;
+    padding: 1rem;
+
+}
+
+#mission-wrapper,
+#vision-wrapper {
+    background-color: black;
+    border-right: 4px solid rgb(255, 3, 255);
+    border-top: 4px solid rgb(255, 3, 255);
+    padding: 1rem;
+
+
+}
+
+#mission-wrapper p,
+#vision-wrapper p,
+#process-wrapper li {
+    font-weight: bold;
+    color: white;
+
+}
+
+#mission-wrapper h1,
+#vision-wrapper h1,
+#process-wrapper h1 {
+    color: white;
+    font-size: 3rem;
+
+
+}
+
+#about-images-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100%;
+    
+
+
+
+}
+
+#about-images-wrapper img {
+    width: 100%;
+    height: 100%;
+
+}
+
+#deepar-demo-image,
+#mirror-logo-image {
+    border-right: 4px solid rgb(255, 3, 255);
+}
