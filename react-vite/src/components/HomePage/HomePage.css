@@ -2,7 +2,7 @@
     display: block;
 }
 
-#hp-cta a {
+#hp-cta a{
     font-size: 4rem;
     color: rgb(0, 0, 0);
     font-weight: 300;
@@ -16,17 +16,26 @@
 
 }
 
-#hp-title h1 {
+
+#hp-title h1,
+#af-text-wrapper h1 {
     font-size: 10rem;
     text-decoration: none;
     color: white;
     font-weight: 300;
+    text-shadow: 1px 1px 2px rgb(241, 90, 229), 0 0 1em rgb(132, 132, 151), 0 0 0.2em rgb(255, 0, 191);
+
 
 }
 
-#hp-headline {
+#af-text-wrapper h1 {
+    text-shadow: 1px 1px 2px rgb(241, 90, 229), 0 0 1em rgb(132, 132, 151), 0 0 0.2em rgb(255, 0, 191);
+}
+
+#hp-headline{
     font-size: 3rem;
     color: black;
+
 }
 
 #hp-subheadline {
@@ -35,14 +44,16 @@
     margin-bottom: 1rem;
 }
 
-.hp-top-container {
-
+.hp-top-container,
+#af-text-wrapper {
+    background-color: #ec80c8;
     border-top: 4px solid rgb(255, 3, 255);
 
 }
 #hp-headline,
 #hp-subheadline {
     margin-left: 2rem;
+
 
 }
 
@@ -53,15 +64,20 @@
     flex-direction: column;
 }
 
+.problem-container {
+    box-shadow: 0px 3px 40px 60px black;
+}
+
 .problem-container,
 .guide-container,
-.plan-container
+.achieve-container,
+.avoid-fail-container
  {
     display: grid;
     width: 100%;
     text-align: center;
     background-color: rgb(0, 0, 0);
-    box-shadow: 0px 3px 40px 60px black;
+
 
 }
 
@@ -72,7 +88,8 @@
 
 #problem-text-wrapper,
 #guide-text-wrapper,
-#plan-text-wrapper
+#plan-text-wrapper,
+#achieve-text-wrapper
  {
 
     border-top: 4px solid rgb(255, 3, 255);
@@ -84,16 +101,24 @@
 
 #problem-text-wrapper h1,
 #guide-text-wrapper h1,
-#plan-text-wrapper h1
+#plan-text-wrapper h1,
+#achieve-text-wrapper h1
+
  {
     color: white;
     font-size: 3rem;
     padding: 1rem;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em rgb(139, 52, 120), 0 0 0.2em rgb(255, 0, 191);
+
 }
+
+
 
 #problem-text-wrapper p,
 #guide-text-wrapper p,
-#plan-text-wrapper p
+#plan-text-wrapper p,
+#achieve-text-wrapper p
+
  {
     color: rgb(245, 235, 235);
     padding: 1rem;
@@ -101,6 +126,7 @@
 
 #guide-text-wrapper h2,
 #plan-text-wrapper h2
+
  {
     font-size: 2rem;
     color: rgb(233, 103, 211);
@@ -110,76 +136,71 @@
 #guide-video-container {
     display: grid;
     gap: 3rem;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+
 }
 
 #guide-video-container iframe {
     margin: 0 auto;
 }
 
-#guide-video-container p {
-    color: rgb(235, 178, 232);
-    font-size: 1rem;
-    text-decoration: underline;
-    text-decoration-color: white;
-}
-
-
-#plan-cta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ec80c8;
-    border-radius: 30px;
-    width: 50%;
-    margin: 0 auto;
-
-}
-
-#plan-cta {
-    font-size: 2rem;
+#af-text-wrapper p {
     color: rgb(0, 0, 0);
-    cursor: pointer;
-
-
-}
-
-#hp-footer {
-display: grid;
-border-top: 4px solid rgb(255, 3, 255);
-background-color: black;
-}
-
-.avoid-fail-container,
-.achieve-container {
-    width: 100%;
-
+    font-size: 20px;
+    padding-bottom: 1rem;
+    font-weight: bold;
+    font-style: italic;
 
 }
 
-#af-text-wrapper,
+
+
+
 #achieve-text-wrapper {
 
     width: 100%;
     height: 100%;
-    display: grid;
-    justify-content: space-between;
-    align-items: end;
     padding-bottom: 1rem;
     text-align: center;
-
 }
 
-#af-text-wrapper p,
-#achieve-text-wrapper p {
+#achieve-text-wrapper p
+ {
     color: rgb(245, 235, 235);
     padding: 1rem;
     font-weight: bold;
 
 
 }
-
-#af-text-wrapper h1,
-#achieve-text-wrapper h1 {
-    font-size: 3rem;
+#achieve-text-wrapper h2
+{
+    font-size: 2rem;
     color: white;
+}
+
+.plan-container {
+    display: grid;
+    text-align: center;
+
+}
+
+#plan-cta {
+
+    background-color: rgb(233, 103, 211);
+    border-radius: 50px;
+    border: 3px solid black;
+    box-shadow: 0px 3px 50px 0px rgb(61, 0, 56);
+    width: 50%;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    font-weight: 400;
+    margin: 0 auto;
+    padding: 1rem;
+    text-shadow: 1px 1px 2px rgb(241, 90, 229), 0 0 1em rgb(132, 132, 151), 0 0 0.2em rgb(255, 0, 191);
+
+
+
 }

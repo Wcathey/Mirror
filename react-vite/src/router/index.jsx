@@ -5,10 +5,8 @@ import Layout from './Layout';
 import Mirror from '../components/Camera/Mirror';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
-import PartnersPage from '../components/PartnersPage';
-import ProjectsPage from '../components/ProjectsPage';
-import SolutionsPage from '../components/SolutionsPage';
-
+import HowItWorksPage from '../components/HowItWorksPage';
+import ContactPage from '../components/ContactPage';
 
 export const router = createBrowserRouter([
   {
@@ -31,16 +29,12 @@ export const router = createBrowserRouter([
         element: <AboutPage />
       },
       {
-        path: "partners",
-        element: <PartnersPage />
+        path: "how-it-works",
+        element: <HowItWorksPage />
       },
       {
-        path: "projects",
-        element: <ProjectsPage />
-      },
-      {
-        path: "solutions",
-        element: <SolutionsPage />
+        path: "contact",
+        element: <ContactPage />
       },
       {
         path: "mirror",

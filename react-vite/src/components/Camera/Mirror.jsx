@@ -51,7 +51,7 @@ function Mirror() {
 
     }
 
-
+    console.log(deepAr)
     return (
 
         <div className="deepar-container">

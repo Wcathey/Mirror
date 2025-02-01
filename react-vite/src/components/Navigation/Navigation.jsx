@@ -16,23 +16,21 @@ function Navigation() {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/about">About</NavLink>
+        <NavLink to="/about">About Us</NavLink>
       </li>
       <li>
-        <NavLink to="/partners">Partners</NavLink>
+        <NavLink to="/how-it-works">How it Works</NavLink>
       </li>
       <li>
-        <NavLink to="/projects">Projects</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
       </li>
-      <li>
-        <NavLink to="/solutions">Solutions</NavLink>
-      </li>
+
       <li>
         <ProfileButton />
       </li>
     </ul>
 
-      
+
 
     </div>
   );

@@ -48,3 +48,11 @@
     background-color: rgb(209, 6, 192);
     border: 2px solid white;
 }
+
+.tier-wrapper {
+    display: flex;
+}
+
+.tier-wrapper p {
+    font-size: 1rem;
+}

@@ -61,6 +61,7 @@ function HomePage() {
             <div className="problem-container">
                 <div id="problem-text-wrapper">
                     <h1>Tired of One-Size-Fits-All Beauty Standards?</h1>
+
                     <p>
                         The modern beauty industry has led to a homogenization of aesthetics, with unrelenting pressures to conform. Mirror helps you break free by celebrating what makes you unique.
                     </p>
@@ -76,12 +77,21 @@ function HomePage() {
                     <p>Mirror uses advanced facial scanning, AI, and AR to provide tailored recommendations for accessories, colors, and makeup that complement your natural features. We’re here to help you look and feel like your most authentic self.</p>
                 </div>
                 <div id="guide-video-container">
-
-                    <p>Watch these short videos to learn more:</p>
-                    <iframe width="700" height="500" src="https://www.youtube.com/embed/CaDb2VL3IXM?si=bMKuB7yCXbxDT-6A" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowfullscreen="allow"></iframe>
                     <iframe width="700" height="500" src="https://www.youtube.com/embed/mmLq9C5Di44?si=_9L2RkyMpMhVrA2Z" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowfullscreen="allow"></iframe>1``
                 </div>
             </div>
+
+            <div className="achieve-container">
+                    <div id="achieve-text-wrapper">
+
+                        <h1>Don’t Let Outdated Beauty Standards Hold You Back</h1>
+                        <p>Feeling like you have to fit a mold can take a toll on your confidence. Mirror is here to remind you that your uniqueness is your strength.</p>
+                        <iframe width="700" height="500" src="https://www.youtube.com/embed/CaDb2VL3IXM?si=bMKuB7yCXbxDT-6A" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowfullscreen="allow"></iframe>
+
+
+                    </div>
+
+                </div>
 
             <div className="plan-container">
                 <div id="plan-text-wrapper">
@@ -92,35 +102,20 @@ function HomePage() {
                     <p>Discover colors, accessories, and makeup that suit you best. </p>
                     <h2>3. Embrace Your Style:</h2>
                     <p>Celebrate your individuality with confidence.</p>
-                    <div id="plan-cta" ref={divRef}>
-                    <OpenModalMenuItem
-                        itemText="Start Your Journey"
-                        onItemClick={closeMenu}
-                        modalComponent={<SignupFormModal />}
-                    />
-                    </div>
-
                 </div>
-            </div>
-
-
-        <div id="hp-footer">
-<div className="avoid-fail-container">
                 <div id="af-text-wrapper">
-                    <h1>Don’t Let Outdated Beauty Standards Hold You Back</h1>
-                    <p>Feeling like you have to fit a mold can take a toll on your confidence. Mirror is here to remind you that your uniqueness is your strength.</p>
-                </div>
+                        <h1>Own Your Authenticity</h1>
+                        <p>Join the growing community of empowered individuals using Mirror to embrace their beauty. Discover how self-expression can transform your confidence and mental well-being.</p>
+
+                    <div id="plan-cta" ref={divRef}>
+                            <OpenModalMenuItem
+                                itemText="Start Your Journey"
+                                onItemClick={closeMenu}
+                                modalComponent={<SignupFormModal />}
+                            />
+                        </div>
+                        </div>
             </div>
-
-            <div className="achieve-container">
-                <div id="achieve-text-wrapper">
-                    <h1>Own Your Authenticity</h1>
-                    <p>Join the growing community of empowered individuals using Mirror to embrace their beauty. Discover how self-expression can transform your confidence and mental well-being.</p>
-                </div>
-
-            </div>
-        </div>
-
 
         </div>
 

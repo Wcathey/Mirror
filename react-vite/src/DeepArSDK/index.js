@@ -23,7 +23,7 @@ async function loadDeepAr () {
     console.error(error);
     return;
   }
-
+  
   return deepAR;
 }
 

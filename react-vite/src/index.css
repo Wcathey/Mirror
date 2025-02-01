@@ -7,11 +7,12 @@
 }
 
 body {
-    background-color: #ec80c8;
+    background-color: black;
     display: block;
     overflow: scroll;
     touch-action: manipulation;
     -webkit-overflow-scrolling: touch;
+    color: white;
 
 }
 
