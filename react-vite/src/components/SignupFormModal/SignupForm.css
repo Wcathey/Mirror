@@ -7,25 +7,18 @@
 
 #signup-form {
 
-    color:rgb(209, 6, 192);
-
-
-
-
-
-
+    color: white;
 
 }
 
 #signup-title {
     font-size: 3rem;
-    color: white;
+    color: rgb(248, 7, 208);
 
 }
 
 #signup-form label {
     font-size: 20px;
-
 
 }
 
@@ -33,7 +26,6 @@
     width: 100%;
     margin-bottom: 1rem;
     margin-top: 1rem;
-
 
 }
 
@@ -47,12 +39,32 @@
     font-weight: 500;
     background-color: rgb(209, 6, 192);
     border: 2px solid white;
+    margin-top: 1rem;
 }
 
-.tier-wrapper {
-    display: flex;
-}
+
 
 .tier-wrapper p {
     font-size: 1rem;
+    color: white;
+    font-weight: bold;
+}
+
+.subscription-container {
+    display: grid;
+    width: 100%;
+    
+}
+
+.subscription-container h1 {
+    font-size: 2rem;
+    color: rgb(248, 7, 208);
+}
+
+.subscription-container label {
+    color:rgb(209, 6, 192);
+}
+
+.duration-wrapper {
+    display: flex;
 }

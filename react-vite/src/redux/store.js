@@ -7,10 +7,12 @@ import {
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import deeparReducer from "./deepar";
+import subscriptionReducer from "./subscription";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  deepar: deeparReducer
+  deepar: deeparReducer,
+  subscription: subscriptionReducer
 });
 
 let enhancer;

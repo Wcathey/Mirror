@@ -3,7 +3,36 @@
   position: absolute;
   top: 4.2rem;
   right: 0;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
 
+
+}
+
+#user-logged-in {
+  display: block;
+  padding: 5px;
+}
+#user-logged-in p {
+  text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em rgb(132, 132, 151), 0 0 0.2em rgb(255, 0, 191);
+  ;
+}
+
+#user-logged-in span {
+  color: rgb(209, 19, 216);
+}
+
+#log-out-btn {
+  width: 100%;
+  background-color: rgb(233, 103, 211);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 30px;
+  border: 3px solid black;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em rgb(132, 132, 151), 0 0 0.2em rgb(255, 0, 191);
+  cursor: pointer;
 }
 
 .user-cred-options li {

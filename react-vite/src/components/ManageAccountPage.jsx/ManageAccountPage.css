@@ -1,0 +1,26 @@
+.manage-account-container{
+color: black;
+display: grid;
+background-color: rgb(163, 159, 159);
+width: 50%;
+height: 100vh
+
+
+}
+
+.no-access p {
+    color: white;
+}
+
+#account-sub-btns {
+    display: flex;
+    gap: 5px;
+}
+
+#account-password-wrapper {
+    display: flex;
+}
+
+.edit-account-wrapper {
+
+}

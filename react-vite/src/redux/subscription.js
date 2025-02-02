@@ -1,32 +1,102 @@
+const LOAD_SUBSCRIPTIONS = 'subscription/loadSubscriptions'
+const LOAD_CURRENT_USER_SUBSCRIPTION = "subscription/loadCurrentUserSubscription"
+const LOAD_SUBSCRIPTION_BY_TIER = "subscription/loadSubscriptionByTier";
 const SET_SUBSCRIPTION = 'subscription/setSubscription';
 const REMOVE_SUBSCRIPTION = 'subscription/removeSubscription';
 const UPDATE_SUBSCRIPTION = 'subscription/updateSubscription';
 
-const setSubscription = (subscription) => ({
-    type: SET_SUBSCRIPTION,
-    tier
-});
+const loadSubscriptions = (subscriptions) => ({
+    type: LOAD_SUBSCRIPTIONS,
+    subscriptions
+})
 
-const removeSubscription = () => ({
-    type: REMOVE_SUBSCRIPTION
-});
-
-const updateSubscription = (subscriptionId) => ({
-    type: UPDATE_SUBSCRIPTION,
+const loadSubscriptionByTier = (tier
+) => ({
+    type: LOAD_SUBSCRIPTION_BY_TIER,
     tier
 })
+
+const loadCurrentUserSubscription = (subscription) => ({
+    type: LOAD_CURRENT_USER_SUBSCRIPTION,
+    subscription
+})
+
+const setSubscription = (subscription) => ({
+    type: SET_SUBSCRIPTION,
+    subscription
+});
+
+const removeSubscription = (tier) => ({
+    type: REMOVE_SUBSCRIPTION,
+    tier
+});
+
+const updateSubscription = (tier) => ({
+    type: UPDATE_SUBSCRIPTION,
+    tier
+});
+
+export const getAllSubscriptions = () => async (dispatch) => {
+    const response = await fetch("/api/subscriptions")
+    if(response.ok) {
+        const data = await response.json();
+
+        dispatch(loadSubscriptions(data.subscriptions));
+    } else if(response.status < 500) {
+        const errorMessages = await response.json();
+        return errorMessages
+    } else {
+        return { server: "Something went wrong. Please try again"}
+    }
+}
+
+export const getCurrentUserSubscription = () => async (dispatch) => {
+    const response =  await fetch("/api/subscriptions/current")
+    const data = await response.json();
+    dispatch(loadCurrentUserSubscription(data.subscription));
+    return response;
+}
+
+export const getSubscriptionByTier = (tier, duration) => async (dispatch) => {
+    console.log(duration)
+    const response = await fetch(`/api/subscriptions/${tier}/${duration}`)
+    if(response.ok) {
+        const data = await response.json();
+
+        dispatch(loadSubscriptionByTier(data));
+    } else if(response.status < 500) {
+        const errorMessages = await response.json();
+        return errorMessages
+    } else {
+        return { server: "Something went wrong. Please try again"}
+    }
+}
+
+
 
 
 const initialState = {};
 
 function subscriptionReducer(state = initialState, action) {
     switch (action.type) {
-        case SET_SUBSCRIPTION: {
+        case LOAD_SUBSCRIPTIONS: {
+            const newState = {...state, ...action.subscriptions}
+            return newState
+        }
+        case LOAD_CURRENT_USER_SUBSCRIPTION: {
+            const newState = {...state, ...action.subscription}
+            return newState
+        }
+        case LOAD_SUBSCRIPTION_BY_TIER: {
             const newState = {...state, ...action.tier}
+            return newState
+        }
+        case SET_SUBSCRIPTION: {
+            const newState = {...state, ...action.subscription}
             return newState;
         }
         case UPDATE_SUBSCRIPTION: {
-            const newState = {...state, ...action.tier}
+            const newState = {...state, ...action.subscriptionId}
             return newState;
         }
         case REMOVE_SUBSCRIPTION: {
@@ -35,5 +105,8 @@ function subscriptionReducer(state = initialState, action) {
             delete newState.canceledSubscription
             return newState
         }
+        default: return state;
     }
 }
+
+export default subscriptionReducer;

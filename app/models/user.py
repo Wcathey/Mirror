@@ -36,7 +36,9 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'subscription_id': self.subscription_id,
             'username': self.username,
             'email': self.email,
+
 
         }

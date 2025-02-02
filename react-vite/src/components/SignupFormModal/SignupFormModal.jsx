@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector} from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
+import { getAllSubscriptions, getSubscriptionByTier } from "../../redux/subscription";
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -10,19 +11,27 @@ function SignupFormModal() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [subscription, setSubscription] = useState("");
+  const [tier, setTier] = useState("");
+  const [duration, setDuration] = useState("")
 
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
+  const subscriptions = useSelector(state => state.subscription.tiers)
+
+  useEffect(() => {
+    dispatch(getSubscriptionByTier(tier,duration))
+  }, [dispatch, tier, duration])
+
   const handleChange = (e) => {
-    setSubscription(e.target.value)
+    setTier(e.target.value)
+    setDuration(e.target.name)
   }
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Selected subscriptions: ${subscription}}`);
+
 
     if (password !== confirmPassword) {
       return setErrors({
@@ -31,11 +40,13 @@ function SignupFormModal() {
       });
     }
 
+
     const serverResponse = await dispatch(
       thunkSignup({
         email,
         username,
         password,
+        subscription_id: subscriptions[0].id
       })
     );
 
@@ -46,6 +57,7 @@ function SignupFormModal() {
     }
   };
 
+  
   return (
 
     <div className="signup-modal-container">
@@ -92,48 +104,67 @@ function SignupFormModal() {
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-         <div className="subscription-form-container">
+        <div className="subscription-container">
 
-                <h1>Select a subscription plan</h1>
-                <div className="tier-wrapper">
-                    <label>
-                        <input
-                        type="radio"
-                        name="subscription"
-                        value="free"
-                        checked={subscription === 'free'}
-                        onChange={handleChange}
-                        />
-                        Free
-                    </label>
-                    <p>Basic facial scanning with recommendations to accessories and 2 filters</p>
-                </div>
-                <div className="tier-wrapper">
-                    <label>
-                        <input
-                        type="radio"
-                        name="subscription"
-                        value="standard"
-                        checked={subscription === 'standard'}
-                        onChange={handleChange}
-                        />
-                        Standard
-                    </label>
-                    <p>Unlocks all filters with optional in app purchases for tutorials</p>
-                </div>
-                <div className="tier-wrapper">
-                    <label>
-                        <input
-                        type="radio"
-                        name="subscription"
-                        value="premium"
-                        checked={subscription === 'premium'}
-                        onChange={handleChange}
-                        />
-                        Premium
-                    </label>
-                    <p>Includes Everything that standard provides along with access to all brands and tutorials</p>
-                </div>
+          <h1>Select a subscription plan</h1>
+          <div className="tier-wrapper">
+            <label>
+              Free
+            </label>
+            <p>Basic facial scanning with recommendations to accessories and 2 filters</p>
+            <input
+              type="radio"
+              name="annual"
+              value="free"
+              checked={tier === 'free' && duration === 'annual'}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="tier-wrapper">
+            <label>
+              Standard
+            </label>
+            <p>Unlocks all filters with optional in app purchases for tutorials</p>
+           <div className="duration-wrapper">
+           <input
+              type="radio"
+              name="monthly"
+              value="standard"
+              checked={duration === 'monthly' && tier === 'standard'}
+              onChange={handleChange}
+            />
+             <input
+              type="radio"
+              name="annual"
+              value="standard"
+              checked={duration === 'annual' && tier === 'standard'}
+              onChange={handleChange}
+            />
+            </div>
+          </div>
+          <div className="tier-wrapper">
+            <label>
+              Premium
+            </label>
+            <p>Includes Everything that standard provides along with access to all brands and tutorials</p>
+        <div className="duration-wrapper">
+            <input
+              type="radio"
+              name="monthly"
+              value="premium"
+              checked={duration === 'monthly' && tier === 'premium'}
+              onChange={handleChange}
+            />
+            <input
+              type="radio"
+              name="annual"
+              value="premium"
+              checked={duration === 'annual' && tier === 'premium'}
+              onChange={handleChange}
+            />
+            </div>
+          </div>
         </div>
         <button type="submit">Sign Up</button>
       </form>

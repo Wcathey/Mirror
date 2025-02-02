@@ -7,7 +7,7 @@ import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
 import HowItWorksPage from '../components/HowItWorksPage';
 import ContactPage from '../components/ContactPage';
-
+import ManageAccountPage from '../components/ManageAccountPage.jsx';
 export const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -39,7 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "mirror",
         element: <Mirror />
-
+      },
+      {
+        path: "manage-account",
+        element: <ManageAccountPage/>
       }
     ],
   },
