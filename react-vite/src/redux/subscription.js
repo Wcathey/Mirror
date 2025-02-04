@@ -1,9 +1,8 @@
 const LOAD_SUBSCRIPTIONS = 'subscription/loadSubscriptions'
 const LOAD_CURRENT_USER_SUBSCRIPTION = "subscription/loadCurrentUserSubscription"
 const LOAD_SUBSCRIPTION_BY_TIER = "subscription/loadSubscriptionByTier";
-const SET_SUBSCRIPTION = 'subscription/setSubscription';
 const REMOVE_SUBSCRIPTION = 'subscription/removeSubscription';
-const UPDATE_SUBSCRIPTION = 'subscription/updateSubscription';
+
 
 const loadSubscriptions = (subscriptions) => ({
     type: LOAD_SUBSCRIPTIONS,
@@ -21,20 +20,12 @@ const loadCurrentUserSubscription = (subscription) => ({
     subscription
 })
 
-const setSubscription = (subscription) => ({
-    type: SET_SUBSCRIPTION,
-    subscription
-});
 
 const removeSubscription = (tier) => ({
     type: REMOVE_SUBSCRIPTION,
     tier
 });
 
-const updateSubscription = (tier) => ({
-    type: UPDATE_SUBSCRIPTION,
-    tier
-});
 
 export const getAllSubscriptions = () => async (dispatch) => {
     const response = await fetch("/api/subscriptions")
@@ -50,10 +41,10 @@ export const getAllSubscriptions = () => async (dispatch) => {
     }
 }
 
-export const getCurrentUserSubscription = () => async (dispatch) => {
-    const response =  await fetch("/api/subscriptions/current")
+export const getCurrentUserSubscription = (id) => async (dispatch) => {
+    const response =  await fetch(`/api/subscriptions/${id}/current`)
     const data = await response.json();
-    dispatch(loadCurrentUserSubscription(data.subscription));
+    dispatch(loadCurrentUserSubscription(data));
     return response;
 }
 
@@ -91,14 +82,7 @@ function subscriptionReducer(state = initialState, action) {
             const newState = {...state, ...action.tier}
             return newState
         }
-        case SET_SUBSCRIPTION: {
-            const newState = {...state, ...action.subscription}
-            return newState;
-        }
-        case UPDATE_SUBSCRIPTION: {
-            const newState = {...state, ...action.subscriptionId}
-            return newState;
-        }
+
         case REMOVE_SUBSCRIPTION: {
             const canceledSubscription = action.subscriptionId
             const newState = {...state, canceledSubscription}

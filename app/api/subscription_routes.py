@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models import Subscription, User
+from flask_login import current_user, login_required
 
 subscription_routes = Blueprint('subscriptions', __name__)
 
@@ -17,6 +18,13 @@ def get_subscriptions():
 
 @subscription_routes.route('/<tier>/<duration>')
 def subscription(tier, duration):
-    
+
     tiers = Subscription.query.filter(Subscription.tier == tier, Subscription.duration == duration)
     return {'tiers': [subscription.to_dict() for subscription in tiers]}
+
+@subscription_routes.route('/<id>/current')
+@login_required
+def get_user_subscription(id):
+    user_subscription = Subscription.query.get(id)
+    return user_subscription.to_dict()
+
