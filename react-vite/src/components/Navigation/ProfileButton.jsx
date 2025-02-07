@@ -54,7 +54,7 @@ function ProfileButton() {
               <li><p>Username:</p> <span>{user.username}</span></li>
               <li><p>Email:</p>  <span>{user.email}</span></li>
               <li>
-                <NavLink to="/manage-account">Manage Account</NavLink>
+                <NavLink to="/manage-account/current">Manage Account</NavLink>
               </li>
               <li>
                 <button id="log-out-btn"onClick={logout}>Log Out</button>

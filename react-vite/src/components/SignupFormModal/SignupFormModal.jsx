@@ -57,7 +57,7 @@ function SignupFormModal() {
     }
   };
 
-  
+
   return (
 
     <div className="signup-modal-container">
@@ -127,13 +127,16 @@ function SignupFormModal() {
             </label>
             <p>Unlocks all filters with optional in app purchases for tutorials</p>
            <div className="duration-wrapper">
+            <label>$4.99 a Month</label>
            <input
+
               type="radio"
               name="monthly"
               value="standard"
               checked={duration === 'monthly' && tier === 'standard'}
               onChange={handleChange}
             />
+            <label>$49.99 a year</label>
              <input
               type="radio"
               name="annual"
@@ -149,6 +152,7 @@ function SignupFormModal() {
             </label>
             <p>Includes Everything that standard provides along with access to all brands and tutorials</p>
         <div className="duration-wrapper">
+          <label>$9.99 a month</label>
             <input
               type="radio"
               name="monthly"
@@ -156,6 +160,7 @@ function SignupFormModal() {
               checked={duration === 'monthly' && tier === 'premium'}
               onChange={handleChange}
             />
+            <label>$99.99 a year</label>
             <input
               type="radio"
               name="annual"

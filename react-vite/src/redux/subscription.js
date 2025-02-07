@@ -4,6 +4,7 @@ const LOAD_SUBSCRIPTION_BY_TIER = "subscription/loadSubscriptionByTier";
 const REMOVE_SUBSCRIPTION = 'subscription/removeSubscription';
 
 
+
 const loadSubscriptions = (subscriptions) => ({
     type: LOAD_SUBSCRIPTIONS,
     subscriptions
@@ -32,7 +33,7 @@ export const getAllSubscriptions = () => async (dispatch) => {
     if(response.ok) {
         const data = await response.json();
 
-        dispatch(loadSubscriptions(data.subscriptions));
+        dispatch(loadSubscriptions(data));
     } else if(response.status < 500) {
         const errorMessages = await response.json();
         return errorMessages
@@ -55,6 +56,7 @@ export const getSubscriptionByTier = (tier, duration) => async (dispatch) => {
         const data = await response.json();
 
         dispatch(loadSubscriptionByTier(data));
+        return data.tiers
     } else if(response.status < 500) {
         const errorMessages = await response.json();
         return errorMessages

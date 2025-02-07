@@ -64,6 +64,9 @@ def sign_up():
     return form.errors, 401
 
 
+
+
+
 @auth_routes.route('/unauthorized')
 def unauthorized():
     """

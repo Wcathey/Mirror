@@ -1,5 +1,6 @@
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
+const UPDATE_USER_SUBSCRIPTION = 'session/updateUserSubscription';
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -9,6 +10,11 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER
 });
+
+const updateUserSubscription = (user) => ({
+  type: UPDATE_USER_SUBSCRIPTION,
+  payload: user
+})
 
 
 
@@ -65,14 +71,44 @@ export const thunkLogout = () => async (dispatch) => {
   dispatch(removeUser());
 };
 
+export const updateUserSubscriptionById = (user) => async (dispatch) => {
+  const userId = user.userId;
+  const subscriptionId = user.subscriptionId
+ const response = await fetch(`/api/users/update/${userId}/${subscriptionId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  });
+  if(response.ok) {
+    const data = await response.json();
+    dispatch(updateUserSubscription(data));
+    return data;
+
+  } else if (response.status < 500) {
+    const errorMessages = await response.json();
+    return errorMessages
+  } else {
+    return { server: "Something went wrong. Please try again" }
+  }
+
+}
+
 const initialState = { user: null };
 
 function sessionReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_USER:
-      return { ...state, user: action.payload };
-    case REMOVE_USER:
-      return { ...state, user: null };
+    case SET_USER: {
+      const newState = {...state, user: action.payload}
+      return newState;
+    }
+    case REMOVE_USER: {
+      const newState = {...state, user: null};
+      return newState;
+    }
+    case UPDATE_USER_SUBSCRIPTION: {
+      const newState = {...state, user: action.payload}
+      return newState;
+    }
     default:
       return state;
   }

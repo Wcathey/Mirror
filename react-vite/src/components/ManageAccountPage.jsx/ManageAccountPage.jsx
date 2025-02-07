@@ -1,11 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { IoMdEye } from "react-icons/io";
 import { getCurrentUserSubscription } from "../../redux/subscription";
+import UpgradeFormPage from "./UpgradeFormPage";
 import "./ManageAccountPage.css"
 
 function ManageAccountPage() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [password, setPassword] = useState('************')
 
@@ -17,8 +19,10 @@ function ManageAccountPage() {
         dispatch(getCurrentUserSubscription(user.subscription_id))
     }, [dispatch])
 
-    const upgradeSubscription = () => {
-        
+    const handleRedirect = (e) => {
+        e.preventDefault();
+        navigate(`/manage-account/current/subscription`)
+
     }
 
     if (user && subscriptionData) {
@@ -53,7 +57,7 @@ function ManageAccountPage() {
                         </div>
                     }
                     <div id="account-sub-btns">
-                        <button className="manage-btn">Upgrade Subscription</button>
+                        <button className="manage-btn" onClick={handleRedirect}>Upgrade Subscription</button>
                         {subscriptionData.tier !== 'free' &&
                         <button className="manage-btn">Cancel Subscription</button>
                         }

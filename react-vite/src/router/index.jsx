@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Outlet} from 'react-router-dom';
 import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
@@ -8,6 +8,7 @@ import AboutPage from '../components/AboutPage';
 import HowItWorksPage from '../components/HowItWorksPage';
 import ContactPage from '../components/ContactPage';
 import ManageAccountPage from '../components/ManageAccountPage.jsx';
+import UpgradeFormPage from '../components/ManageAccountPage.jsx/UpgradeFormPage.jsx';
 export const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -41,8 +42,17 @@ export const router = createBrowserRouter([
         element: <Mirror />
       },
       {
-        path: "manage-account",
-        element: <ManageAccountPage/>
+       path: "manage-account/current",
+       element:<Outlet />,
+       children: [
+        {
+          path: "",
+          element: <ManageAccountPage/>
+        },{
+          path: "subscription",
+          element: <UpgradeFormPage />
+        }
+       ]
       }
     ],
   },
