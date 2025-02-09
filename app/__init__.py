@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, session, redirect
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
+from werkzeug.security import _hash_internal
 from flask_login import LoginManager
 from .models import db, User, Subscription
 from .api.user_routes import user_routes
