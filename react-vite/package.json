@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "CI=false && react-scripts build && cp -R ../app/static/* build/static",
+    "build": "CI=false && vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "deepar": "^5.6.15",
+    "dotenv": "^16.4.7",
     "gsap": "^3.12.5",
     "js-cookie": "^3.0.5",
     "react": "^18.2.0",

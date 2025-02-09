@@ -1,5 +1,5 @@
 import * as deepar from "deepar";
-
+require('dotenv').config()
 async function loadDeepAr () {
   const previewElement = document.getElementById("ar-screen");
 
@@ -7,7 +7,7 @@ async function loadDeepAr () {
 
   try {
     deepAR = await deepar.initialize({
-      licenseKey: '16246bf4acafadf74cb16bf63a8f3ce7c71e4602bbc200f4ebf5863c12f603ebc9e260c61927603b',
+      licenseKey:process.env.DEEP_AR_SDK_KEY,
       previewElement: previewElement,
       effect: '/src/DeepArSDK/effects/eyeshadow.deepar',
       additionalOptions: {
