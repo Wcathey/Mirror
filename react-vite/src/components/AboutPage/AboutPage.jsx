@@ -14,7 +14,7 @@ function AboutPage() {
 
 
                     <h1>Process</h1>
-                    <uL>
+                    <ul>
                         <li>
                             Personalized AI-driven facial scanning and beauty suggestions.
                         </li>
@@ -24,7 +24,7 @@ function AboutPage() {
                         <li>
                             Customizable makeup filters for instant transformations.
                         </li>
-                    </uL>
+                    </ul>
 
 
             </div>
