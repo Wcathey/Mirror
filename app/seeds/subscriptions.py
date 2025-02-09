@@ -6,15 +6,15 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_subscriptions():
     free = Subscription(
-        tier='free', price=0, duration='annual')
+        id=1, tier='free', price=0, duration='annual')
     standard_monthly = Subscription(
-       tier='standard', price=4.99, duration='monthly')
+       id=2, tier='standard', price=4.99, duration='monthly')
     standard_annual = Subscription(
-       tier='standard', price=49.99, duration='annual')
+       id=3, tier='standard', price=49.99, duration='annual')
     premium_monthly = Subscription(
-       tier='premium', price=9.99, duration='monthly')
+       id=4, tier='premium', price=9.99, duration='monthly')
     premium_annual = Subscription(
-       tier='premium', price=99.99, duration='annual')
+       id=5, tier='premium', price=99.99, duration='annual')
 
     db.session.add(free)
     db.session.add(standard_monthly)
