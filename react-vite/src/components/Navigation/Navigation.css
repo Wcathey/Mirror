@@ -1,38 +1,57 @@
 .profile-dropdown {
   background-color: rgba(0,0,0,0.7);
-  position: absolute;
-  top: 4.2rem;
+  position: fixed;
+  top: 0;
   right: 0;
-  border-top: 3px solid black;
-  border-left: 3px solid black;
+  z-index: 1;
+
 
 
 }
 
 #user-logged-in {
-  display: block;
+  display: grid;
+  grid-template-rows: 15% 10% 1fr;
+  align-items: end;
   padding: 5px;
+
 }
-#user-logged-in p {
-  text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em rgb(132, 132, 151), 0 0 0.2em rgb(255, 0, 191);
+#user-logged-in p,
+#user-logged-in a {
+  transition: color 0.3s ease;
+  font-weight: 600;
   ;
 }
 
+#user-logged-in a:hover {
+color:  rgb(252, 54, 202);
+transition: color 0.3s ease
+
+}
+
+
 #user-logged-in span {
-  color: rgb(209, 19, 216);
+  color: rgb(255, 0, 212);
+  font-weight: 500;
+  font-size: 20px;
 }
 
 #log-out-btn {
   width: 100%;
-  background-color: rgb(233, 103, 211);
+  background-color: black;
   color: white;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 400;
   padding: 5px;
   border-radius: 30px;
-  border: 3px solid black;
-  text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em rgb(132, 132, 151), 0 0 0.2em rgb(255, 0, 191);
+  border: 3px solid white;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#log-out-btn:hover {
+  background-color: rgb(253, 31, 194);
+  transition: background-color 0.3s ease;
 }
 
 .user-cred-options li {
@@ -41,7 +60,8 @@
 
 
 .user-cred-options li:hover {
-  color: rgb(209, 19, 216);
+  color: rgb(252, 54, 202);
+  transition: color 0.3s ease;
 }
 
 
@@ -60,8 +80,13 @@ height: 100%;
   text-decoration: none;
   font-size: 25px;
   margin-top: 1rem;
+  transition: all 0.3s ease;
 }
 
+.nav-container a:hover {
+  color: rgb(252, 54, 202);
+  transition: color 0.3s ease;
+}
 
 
 .nav-container {
@@ -79,5 +104,13 @@ height: 100%;
   position: absolute;
   top: 0;
   right: 1rem;
+  cursor: pointer;
+  color: white;
+  transition: color .3s ease-in-out;
 
+}
+
+#menu-dropdown:hover {
+  color: rgb(252, 54, 202);
+  transition: color .3s ease-in-out;
 }

@@ -9,6 +9,8 @@ import HowItWorksPage from '../components/HowItWorksPage';
 import ContactPage from '../components/ContactPage';
 import ManageAccountPage from '../components/ManageAccountPage.jsx';
 import UpgradeFormPage from '../components/ManageAccountPage.jsx/UpgradeFormPage.jsx';
+import ConfirmationPage from '../components/ManageAccountPage.jsx/ConfirmationPage.jsx';
+import ChangePasswordForm from '../components/ManageAccountPage.jsx/ChangePasswordForm.jsx';
 export const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -51,6 +53,14 @@ export const router = createBrowserRouter([
         },{
           path: "subscription",
           element: <UpgradeFormPage />
+        },
+        {
+          path: "confirmation",
+          element: <ConfirmationPage />
+        },
+        {
+          path: "change-password",
+          element: <ChangePasswordForm />
         }
        ]
       }

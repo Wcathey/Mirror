@@ -1,23 +1,41 @@
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { IoMdEye } from "react-icons/io";
 import { getCurrentUserSubscription } from "../../redux/subscription";
-import UpgradeFormPage from "./UpgradeFormPage";
+import CancelSubscriptionModal from "./CancelSubscriptionModal";
 import "./ManageAccountPage.css"
-
+import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
+import DeleteAccountForm from "./DeleteAccountForm";
+import { clearVerificationStatus } from "../../redux/verification";
 function ManageAccountPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [password, setPassword] = useState('************')
+    const [showMenu, setShowMenu] = useState(false);
+
 
     const user = useSelector(state => state.session.user)
     const subscriptionData = useSelector(state => state.subscription)
 
 
     useEffect(() => {
+        if (!showMenu) return;
+
+        const closeMenu = (e) => {
+          if (ulRef.current && !ulRef.current.contains(e.target)) {
+            setShowMenu(false);
+          }
+        };
+
+        document.addEventListener("click", closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+      }, [showMenu]);
+
+    useEffect(() => {
         dispatch(getCurrentUserSubscription(user.subscription_id))
     }, [dispatch])
+
+    const closeMenu = () => setShowMenu(false);
 
     const handleRedirect = (e) => {
         e.preventDefault();
@@ -25,6 +43,14 @@ function ManageAccountPage() {
 
     }
 
+    const handleChange = (e) => {
+        e.preventDefault();
+        navigate('/manage-account/current/change-password')
+    }
+
+    const handleModalClose = () => {
+        dispatch(clearVerificationStatus())
+    }
     if (user && subscriptionData) {
         return (
             <div className="manage-account-container">
@@ -32,37 +58,45 @@ function ManageAccountPage() {
 
                 <div className="edit-user-cred-wrapper">
                     <h1>User Details</h1>
-                    <p>Username: <span>{user.username}</span></p>
-                    <p>Email: <span> {user.email}</span></p>
-                    <div className="edit-password-wrapper">
-                        <div id="password-container">
-                            <p>Password</p>
-                            <input
-                                type="text"
-                                value={password}
-                            />
-                            <button id="show-password"><IoMdEye></IoMdEye></button>
-                        </div>
-                        <button className="manage-btn">Change Password</button>
-                    </div>
+                    <h3>Username: <span>{user.username}</span></h3>
+                    <h3>Email: <span> {user.email}</span></h3>
                 </div>
+
                 <div className="edit-subscription-wrapper">
                     <h1>Subscription</h1>
                     <h2>Current Plan</h2>
-                    <p>Tier: <span>{subscriptionData.tier}</span></p>
+                    <h3>Tier: <span>{subscriptionData.tier}</span></h3>
                     {subscriptionData.tier !== 'free' &&
                         <div id="paid-tier-wrapper">
                             <p>Price: <span>${subscriptionData.price}</span></p>
                             <p>Duration: <span>{subscriptionData.duration}</span></p>
                         </div>
                     }
-                    <div id="account-sub-btns">
-                        <button className="manage-btn" onClick={handleRedirect}>Upgrade Subscription</button>
+
+                </div>
+
+                    <div className="account-settings-wrapper">
+                        <h1>Settings</h1>
+                        <div id="account-sub-btns">
+                            <p className="manage-btn" onClick={handleRedirect}>Upgrade Subscription</p>
                         {subscriptionData.tier !== 'free' &&
-                        <button className="manage-btn">Cancel Subscription</button>
+                        <OpenModalMenuItem
+                            modalComponent={<CancelSubscriptionModal user={user}/>}
+                            itemText={"Cancel Subscription"}
+                            onItemClick={closeMenu}
+                        />
                         }
                     </div>
-                </div>
+                        <div className="edit-password-wrapper">
+                        <button className="manage-btn" onClick={handleChange}>Change Password</button>
+                    </div>
+                        <OpenModalMenuItem
+                            modalComponent={<DeleteAccountForm/>}
+                            itemText={'Delete Account'}
+                            onItemClick={closeMenu}
+                            onModalClose={handleModalClose}
+                        />
+                    </div>
             </div>
         )
     }

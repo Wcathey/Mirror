@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, cloneElement } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CiMenuBurger } from "react-icons/ci";
 import { thunkLogout } from "../../redux/session";
@@ -18,6 +18,7 @@ function ProfileButton() {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
     setShowMenu(!showMenu);
   };
+
 
   useEffect(() => {
     if (!showMenu) return;
@@ -54,7 +55,7 @@ function ProfileButton() {
               <li><p>Username:</p> <span>{user.username}</span></li>
               <li><p>Email:</p>  <span>{user.email}</span></li>
               <li>
-                <NavLink to="/manage-account/current">Manage Account</NavLink>
+                <NavLink to="/manage-account/current" onClick={closeMenu}>Manage Account</NavLink>
               </li>
               <li>
                 <button id="log-out-btn"onClick={logout}>Log Out</button>

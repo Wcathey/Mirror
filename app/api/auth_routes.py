@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
@@ -63,6 +63,20 @@ def sign_up():
         return user.to_dict()
     return form.errors, 401
 
+@auth_routes.route('/password', methods=['PUT'])
+def change_password():
+    data = request.get_json()
+    if data:
+        id = data.get('id')
+        password = data.get('password')
+        new_password = data.get('newPassword')
+        user = User.query.get(id)
+
+        if not user.check_password(password):
+            return {'errors': {'message': 'Unauthorized'}}, 401
+        user.password = new_password
+        db.session.commit()
+        return user.to_dict()
 
 
 

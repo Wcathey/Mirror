@@ -13,7 +13,13 @@
     border-top: 3px solid black;
     text-decoration: none;
     width: 50%;
+    transition: background-color 0.3s ease-in-out;
 
+}
+
+#hp-cta a:hover {
+    background-color: rgb(252, 54, 202);
+    transition: background-color 0.3s ease-in-out;
 }
 
 
@@ -25,8 +31,8 @@
     font-weight: 300;
     text-shadow: 1px 1px 2px rgb(241, 90, 229), 0 0 1em rgb(132, 132, 151), 0 0 0.2em rgb(255, 0, 191);
 
-
 }
+
 
 #af-text-wrapper h1 {
     text-shadow: 1px 1px 2px rgb(241, 90, 229), 0 0 1em rgb(132, 132, 151), 0 0 0.2em rgb(255, 0, 191);
@@ -183,6 +189,7 @@
 .plan-container {
     display: grid;
     text-align: center;
+
 
 }
 

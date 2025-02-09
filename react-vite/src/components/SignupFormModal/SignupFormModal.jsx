@@ -108,11 +108,12 @@ function SignupFormModal() {
 
           <h1>Select a subscription plan</h1>
           <div className="tier-wrapper">
-            <label>
+            <h2>
               Free
-            </label>
+            </h2>
             <p>Basic facial scanning with recommendations to accessories and 2 filters</p>
             <input
+              id="free-input"
               type="radio"
               name="annual"
               value="free"
@@ -122,10 +123,11 @@ function SignupFormModal() {
           </div>
 
           <div className="tier-wrapper">
-            <label>
+            <h2>
               Standard
-            </label>
-            <p>Unlocks all filters with optional in app purchases for tutorials</p>
+            </h2>
+            <p>Includes All Standard Features</p>
+            <p>*Additional Brands and Tutorials Available For Purchase</p>
            <div className="duration-wrapper">
             <label>$4.99 a Month</label>
            <input
@@ -147,10 +149,11 @@ function SignupFormModal() {
             </div>
           </div>
           <div className="tier-wrapper">
-            <label>
+            <h2>
               Premium
-            </label>
-            <p>Includes Everything that standard provides along with access to all brands and tutorials</p>
+            </h2>
+            <p>Includes All Standard Features</p>
+            <p>+ Access to all brands and tutorials</p>
         <div className="duration-wrapper">
           <label>$9.99 a month</label>
             <input
@@ -172,6 +175,7 @@ function SignupFormModal() {
           </div>
         </div>
         <button type="submit">Sign Up</button>
+
       </form>
     </div>
   );

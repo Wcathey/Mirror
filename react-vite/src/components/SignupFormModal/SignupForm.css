@@ -7,6 +7,10 @@
     background-color: rgb(0, 0, 0);
     text-align: center;
     height: 95vh;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding-bottom: 1rem;
 
 
 }
@@ -24,17 +28,21 @@
 
 #signup-title {
     font-size: 3rem;
-    color: rgb(248, 7, 208);
+    color: white;
 
 }
 
 #signup-form label {
     font-size: 20px;
+    color: rgb(252, 54, 202);
 
 }
 
 #signup-form input {
 width: 100%;
+text-align: center;
+outline-color: white;
+transition: outline-color 0.3s ease
 
 
 
@@ -47,10 +55,12 @@ width: 100%;
     font-size: 1rem;
     color: black;
     font-weight: 500;
-    background-color: rgb(209, 6, 192);
+    background-color: rgb(252, 54, 202);
     border: 2px solid white;
     width: 80%;
     margin: 0 auto;
+    cursor: pointer;
+
 
 }
 
@@ -58,8 +68,8 @@ width: 100%;
 
 .tier-wrapper p {
     font-size: 1rem;
-    color: white;
-    font-weight: bold;
+    color: rgb(212, 211, 211);
+    font-weight: 400;
 
 }
 
@@ -71,11 +81,13 @@ width: 100%;
 
 .subscription-container h1 {
     font-size: 2rem;
-    color: rgb(248, 7, 208);
+    color: white;
 }
 
-.subscription-container label {
-    color:rgb(209, 6, 192);
+.subscription-container h2 {
+    color:rgb(255, 255, 255);
+    font-weight: 500;
+
 }
 
 .duration-wrapper {
@@ -86,4 +98,16 @@ width: 100%;
     text-align: center;
     padding: 1rem;
 
+}
+
+.duration-wrapper input {
+    width: fit-content;
+    height: 80%;
+    cursor: pointer;
+}
+
+#free-input {
+    width: fit-content;
+    height: 20%;
+    cursor: pointer;
 }

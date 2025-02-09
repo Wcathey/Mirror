@@ -8,11 +8,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import deeparReducer from "./deepar";
 import subscriptionReducer from "./subscription";
+import verificationReducer from "./verification";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   deepar: deeparReducer,
-  subscription: subscriptionReducer
+  subscription: subscriptionReducer,
+  verification: verificationReducer
 });
 
 let enhancer;

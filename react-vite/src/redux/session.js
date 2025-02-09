@@ -18,6 +18,8 @@ const updateUserSubscription = (user) => ({
 
 
 
+
+
 export const thunkAuthenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/");
 	if (response.ok) {
@@ -71,6 +73,27 @@ export const thunkLogout = () => async (dispatch) => {
   dispatch(removeUser());
 };
 
+export const changePassword = (user) => async (dispatch) => {
+
+  const response = await fetch('/api/auth/password', {
+    method: "PUT",
+    headers: { "Content-Type": "application/json"},
+    body: JSON.stringify(user)
+  })
+  if(response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data));
+  } else if (response.status < 500) {
+    const errorMessages = await response.json();
+    return errorMessages
+  } else {
+    return { server: "Something went wrong. Please try again" }
+  }
+};
+
+
+
+
 export const updateUserSubscriptionById = (user) => async (dispatch) => {
   const userId = user.userId;
   const subscriptionId = user.subscriptionId
@@ -93,6 +116,46 @@ export const updateUserSubscriptionById = (user) => async (dispatch) => {
 
 }
 
+export const convertToFreeAccount = (user) => async (dispatch) => {
+  const userId = user.id;
+  const subscriptionId = user.subscriptionId
+  const response = await fetch(`/api/users/cancel/${userId}/${subscriptionId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  })
+  if(response.ok) {
+    const data = await response.json();
+    dispatch(updateUserSubscription(data));
+    return data;
+
+  } else if (response.status < 500) {
+    const errorMessages = await response.json();
+    return errorMessages
+  } else {
+    return { server: "Something went wrong. Please try again" }
+  }
+}
+
+export const deleteUserAccount = (user) => async (dispatch) => {
+  const response = await fetch('/api/users/delete', {
+    method: "DELETE",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(user)
+  });
+  if(response.ok) {
+    const data = await response.json();
+    dispatch(removeUser())
+    return data;
+
+  } else if (response.status < 500) {
+    const errorMessages = await response.json();
+    return errorMessages
+  } else {
+    return { server: "Something went wrong. Please try again" }
+  }
+}
+
 const initialState = { user: null };
 
 function sessionReducer(state = initialState, action) {
@@ -109,6 +172,7 @@ function sessionReducer(state = initialState, action) {
       const newState = {...state, user: action.payload}
       return newState;
     }
+
     default:
       return state;
   }
