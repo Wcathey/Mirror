@@ -49,6 +49,8 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     )
 
+    
+
     if environment == "production":
         op.execute(f"ALTER TABLE subscriptions SET SCHEMA {SCHEMA};")
 
