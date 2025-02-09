@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from werkzeug.security import _hash_internal
 from flask_login import LoginManager
-from .models import db, User, Subscription
+from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.verification_2FA_routes import verification_2FA_routes
@@ -42,8 +42,6 @@ Migrate(app, db)
 # Application Security
 CORS(app)
 
-with app.app_context():
-    db.create_all()
 
 @app.before_request
 def https_redirect():

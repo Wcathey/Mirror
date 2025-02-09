@@ -27,11 +27,3 @@ class Subscription(db.Model):
             'price': self.price,
             'duration': self.duration
         }
-@event.listens_for(Subscription.__table__, 'after_create', once=True)
-def create_subscriptions(*args, **kw):
-    db.session.add(Subscription(tier='free', price=0, duration='annual'))
-    db.session.add(Subscription(tier='standard', price=4.99, duration='monthly'))
-    db.session.add(Subscription(tier='standard', price=49.99, duration='annual'))
-    db.session.add(Subscription(tier='premium', price=9.99, duration='monthly'))
-    db.session.add(Subscription(tier='premium', price=99.99, duration='annual'))
-    db.session.commit()
