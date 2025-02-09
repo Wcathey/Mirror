@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
-import { getAllSubscriptions, getSubscriptionByTier } from "../../redux/subscription";
+import { getSubscriptionByTier } from "../../redux/subscription";
 import "./SignupForm.css";
 
 function SignupFormModal() {

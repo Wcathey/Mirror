@@ -10,16 +10,13 @@ function HomePage() {
     const [showMenu, setShowMenu] = useState(false);
     const divRef = useRef();
 
-    const toggleMenu = (e) => {
-        e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
-        setShowMenu(!showMenu);
-    };
+
 
     useEffect(() => {
         if (!showMenu) return;
 
         const closeMenu = (e) => {
-            if (ulRef.current && !ulRef.current.contains(e.target)) {
+            if (divRef.current && !divRef.current.contains(e.target)) {
                 setShowMenu(false);
             }
         };

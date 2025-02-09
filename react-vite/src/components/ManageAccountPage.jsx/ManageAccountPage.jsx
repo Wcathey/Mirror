@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
 import { getCurrentUserSubscription } from "../../redux/subscription";
 import CancelSubscriptionModal from "./CancelSubscriptionModal";
 import "./ManageAccountPage.css"
@@ -10,6 +11,7 @@ import { clearVerificationStatus } from "../../redux/verification";
 function ManageAccountPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const ulRef = useRef()
     const [showMenu, setShowMenu] = useState(false);
 
 
@@ -33,7 +35,7 @@ function ManageAccountPage() {
 
     useEffect(() => {
         dispatch(getCurrentUserSubscription(user.subscription_id))
-    }, [dispatch])
+    }, [dispatch, user.subscription_id])
 
     const closeMenu = () => setShowMenu(false);
 

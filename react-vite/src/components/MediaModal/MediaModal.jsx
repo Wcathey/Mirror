@@ -1,7 +1,7 @@
 import './MediaModal.css'
 import { useModal } from "../../context/Modal";
 
-function MediaModal (capture) {
+function MediaModal () {
     const { closeModal } = useModal();
 
 

@@ -21,7 +21,7 @@ function UpgradeFormPage() {
           setSubscriptionId(res[0].id)
          })
         }
-    }, [dispatch, tier, duration])
+    }, [dispatch, tier, duration, user.subscription_id])
 
     const handleSubmit = (e) => {
         e.preventDefault();

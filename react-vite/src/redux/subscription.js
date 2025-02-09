@@ -22,10 +22,6 @@ const loadCurrentUserSubscription = (subscription) => ({
 })
 
 
-const removeSubscription = (tier) => ({
-    type: REMOVE_SUBSCRIPTION,
-    tier
-});
 
 
 export const getAllSubscriptions = () => async (dispatch) => {

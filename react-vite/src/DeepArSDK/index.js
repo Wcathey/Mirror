@@ -1,5 +1,4 @@
 import * as deepar from "deepar";
-import Carousel from "./carousel";
 
 async function loadDeepAr () {
   const previewElement = document.getElementById("ar-screen");
@@ -23,7 +22,7 @@ async function loadDeepAr () {
     console.error(error);
     return;
   }
-  
+
   return deepAR;
 }
 

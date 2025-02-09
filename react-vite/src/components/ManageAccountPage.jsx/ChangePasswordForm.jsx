@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { changePassword } from "../../redux/session";
 
 function ChangePasswordForm() {

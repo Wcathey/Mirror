@@ -1,7 +1,7 @@
 import * as deepar from "deepar";
 
 const START_DEEPAR = 'deepar/startDeepar';
-const STOP_DEEPAR = 'deepar/stopDeepar';
+
 
 
 const startDeepar = (data) => ({
@@ -10,9 +10,7 @@ const startDeepar = (data) => ({
 
 });
 
-const stopDeepar = () => ({
-    type: STOP_DEEPAR
-})
+
 
 export const initializeDeepAr = (element) => async (dispatch) => {
     const deepAR = await deepar.initialize({
@@ -25,7 +23,7 @@ export const initializeDeepAr = (element) => async (dispatch) => {
 
 }
 
-export const reloadDeepAr = (deepAR) => async (dispatch) => {
+export const reloadDeepAr = (deepAR) => async () => {
     await deepAR.shutdown();
 
 
@@ -39,10 +37,7 @@ function deeparReducer(state = initialState, action) {
             const newState = {... state, Sdk: action.data};
             return newState;
         }
-        case STOP_DEEPAR: {
-            const newState = {...state, deepAR: null};
-            return newState;
-        }
+
 
         default: return state;
     }

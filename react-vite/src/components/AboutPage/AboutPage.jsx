@@ -6,11 +6,11 @@ function AboutPage() {
             <div className="about-wrapper">
 
                     <h1>Misson</h1>
-                    <p>"Mirror is dedicated to empowering individuals by redefining beauty standards through personalized recommendations and augmented reality, fostering self-care and self-expression."</p>
+                    <p>Mirror is dedicated to empowering individuals by redefining beauty standards through personalized recommendations and augmented reality, fostering self-care and self-expression.</p>
 
 
                     <h1>Vision</h1>
-                    <p>"A world where every individual can confidently explore their unique beauty with the help of cutting-edge beauty technology."</p>
+                    <p>A world where every individual can confidently explore their unique beauty with the help of cutting-edge beauty technology.</p>
 
 
                     <h1>Process</h1>
@@ -25,7 +25,7 @@ function AboutPage() {
                             Customizable makeup filters for instant transformations.
                         </li>
                     </uL>
-                
+
 
             </div>
         </div>

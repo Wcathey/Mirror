@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, cloneElement } from "react";
+import { useState, useEffect, useRef} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CiMenuBurger } from "react-icons/ci";
 import { thunkLogout } from "../../redux/session";
