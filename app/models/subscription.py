@@ -5,7 +5,7 @@ from sqlalchemy.sql import func
 
 
 class Subscription(db.Model):
-    __tablename__ = 'subscriptions'
+    __tablename__ = "subscriptions"
 
 
     if environment == "production":
@@ -17,7 +17,7 @@ class Subscription(db.Model):
     duration = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now(), onupdate=func.now())
-    users = relationship('User', back_populates='subscription', cascade="all, delete-orphan, save-update")
+    users = relationship("User", back_populates="subscription", cascade="all, delete-orphan")
 
 
     def to_dict(self):

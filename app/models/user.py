@@ -7,10 +7,10 @@ from sqlalchemy.sql import func
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     subscription_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('subscriptions.id')), nullable=False)
@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=func.now())
     updated_at = db.Column(db.DateTime, default=func.now(), onupdate=func.now())
-    subscription = relationship('Subscription', back_populates='users')
+    subscription = relationship("Subscription", back_populates="users")
 
 
     @property
