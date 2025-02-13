@@ -7,9 +7,8 @@ async function loadDeepAr () {
 
   try {
     deepAR = await deepar.initialize({
-      licenseKey:process.env.DEEP_AR_SDK_KEY,
+      licenseKey:"16246bf4acafadf74cb16bf63a8f3ce7c71e4602bbc200f4ebf5863c12f603ebc9e260c61927603b",
       previewElement: previewElement,
-      effect: '/src/DeepArSDK/effects/eyeshadow.deepar',
       additionalOptions: {
         cameraConfig: {
           disableDefaultCamera: true

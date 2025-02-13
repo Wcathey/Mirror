@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "deepar": "^5.6.15",
+    "deepar": "^5.6.16",
     "dotenv": "^16.4.7",
     "gsap": "^3.12.5",
     "js-cookie": "^3.0.5",
